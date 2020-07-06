@@ -24,11 +24,11 @@ app.get("/tables", function (req, res){
 })
 
 
-app.get("/reservation", function(req, res){
-    res.sendFile(path.join(___dirname, "reserve.html"))
+app.get("/reserve", function(req, res){
+    res.sendFile(path.join(__dirname, "reserve.html"))
 })
 
-app.get("/api/reservation", function(req, res){
+app.get("/api/reserve", function(req, res){
     return res.json(reservation)
 
 })
@@ -36,6 +36,11 @@ app.get("/api/reservation", function(req, res){
 // Make a app.post method that takes in the reservation and makes a table
 /* app.post()
  */
+
+app.post("/", function (req, res) {
+    console.log("We hit the reservation  route", req.body)
+})
+
 
 app.listen(PORT, function (){
     console.log("listening to port"+PORT)

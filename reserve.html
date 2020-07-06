@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Make a reservation</h1>
+                <hr>
+               
+            </div>
+            <div class="row">
+        
+                <div class="col-12">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Name</label>
+                            <input type="text" class="form-control" id="name"
+                                placeholder="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">How many in the party?</label>
+                            <input type="text" class="form-control" id="number" placeholder="name">
+                        </div>
+                        </div>
+                    
+                    </form>
+                    <a href="/reserve"><button id="submit"
+                            class="btn btn-danger btn-lg"><span class="fa fa-eye"></span>
+                            Make Reservation</button></a>
+        
+        
+                </div>
+            </div>
+        </div>
+ <script type="text/javascript">    
+      $("#submit").on("click", function (event) {
+            event.preventDefault();
+            var newReservation = {
+                name: $("#name").val().trim(),
+                number: $("#number").val().trim(),
+            };
+
+            // Question: What does this code do??  it allow us to pinpoint or target  the send data 
+            $.post("/api/reserve", newReservation)
+                .then(function (data) {
+                    console.log("reserve.html", data);
+                    alert("Adding reservation...");
+                });
+        });
+    
+    </script>
+    <!-- This is what we need -->
+<!-- $("#add-btn").on("click", function(event) {
+event.preventDefault();
+var newCharacter = {
+name: $("#name").val().trim(),
+role: $("#role").val().trim(),
+age: $("#age").val().trim(),
+forcePoints: $("#force-points").val().trim()
+};
+
+// Question: What does this code do?? it allow us to pinpoint or target the send
+data
+$.post("/api/characters", newCharacter)
+.then(function(data) {
+console.log("add.html", data);
+alert("Adding character...");
+});
+}); -->
+<!-- ends -->
+
+
+</body>
+
+</html>
